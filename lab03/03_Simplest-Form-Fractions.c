@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(){
-    char numStr[10];
-    fgets(numStr, 10, stdin);
-    int num = atoi(numStr);
+int main()
+{
+    char x1[10], y1[10];
+    fgets(x1, 10, stdin);
+    fgets(y1, 10, stdin);
+    int x = atoi(x1);
+    int y = atoi(y1);
 
-    for(int i = num;i >= 0;i--){
-        printf("%d\n", i);
+    while (1)
+    {
+        // todo
     }
 }
