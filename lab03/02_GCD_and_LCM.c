@@ -22,4 +22,5 @@ int main()
     lcm = (aTemp * bTemp) / gcd;
     printf("GCD: %lld\n", gcd);
     printf("LCM: %lld\n", lcm);
+    
 }
