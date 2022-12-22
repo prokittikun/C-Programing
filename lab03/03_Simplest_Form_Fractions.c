@@ -12,7 +12,8 @@ int main()
     aTemp = a;
     bTemp = b;
     long long r = a % b;
-    while (r != 0){
+    while (r != 0)
+    {
         a = b;
         b = r;
         r = a % b;
