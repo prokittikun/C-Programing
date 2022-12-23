@@ -18,18 +18,10 @@ int main()
         r = a % b;
     }
     gcd = b;
-    for (int i = 1; i <= gcd; i++){
-        if ((gcd * i) == aTemp){
-            aTemp = i;
-        }
-        if ((gcd * i) == bTemp){
-            bTemp = i;
-        }
-    }
-    if (bTemp == 1){
+    if (bTemp/gcd == 1){
         printf("= %d", aTemp);
     }
     else{
-        printf("= %d/%d", aTemp, bTemp);
+        printf("= %d/%d", aTemp/gcd , bTemp/gcd );
     }
 }
