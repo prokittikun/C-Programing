@@ -14,7 +14,7 @@ int main()
     int size = atoi(sizeStr);
     int size2 = atoi(sizeStr);
     int originalSize = atoi(sizeStr);
-    if (size > 0 && size <= 26)
+    if (size > 0 && size <= 1000)
     {
         int s;
         int r;
