@@ -1,18 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-int convert(int n)
-{
-    int ans = 0, p = 1;
-    int temp = n % 2;
-    ans += temp * p;
-    p *= 10;
-    return n >> 1;
-}
-int main()
-{
-    char digitTemp[10];
-    fgets(digitTemp, 10, stdin);
-    int digit = atoi(digitTemp);
 
-    printf("%d.", convert(digit));
+long int convert(int n){
+  if(n == 0) return 0;
+  return n % 2 + 10 * (convert(n / 2));
+}
+
+int main() {
+  char nTemp[10];
+  int n = 0;
+  fgets(nTemp, 10, stdin);
+  n = atoi(nTemp);
+  printf("%ld", convert(n));
 }
