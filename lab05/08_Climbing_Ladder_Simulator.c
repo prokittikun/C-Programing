@@ -1,61 +1,50 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void resStair(int n, int start)
+char showStair(int index, int step, int *current, int stairRow)
 {
-    for (int i = 0; i < n; ++i)
+    printf("|-");
+    if (step >= 0)
     {
-        if (start == i)
+        if ((*current + step) + 1 == index)
         {
-            printf("|-O-|\n");
+            printf("0");
+            *current += step;
         }
-        else if (start + 1 == i)
+        else if ((*current) == index)
         {
-            printf("|-^-|\n");
+            printf("^");
         }
         else
         {
-            printf("|---|\n");
+            printf("-");
         }
     }
+    else
+    {
+    }
+    printf("-|");
 }
-
 int main()
 {
-    int n = 0;
-    int stepTemp = 0;
-    int i = 1;
-
+    int stairRow;
+    int step = 0;
+    int current = 0;
     printf("Input number of stairs: ");
-    scanf("%d", &n);
-    int stepTemp = (n - 2);
-
-    printf("---- round 1 ----\n");
-    resStair(n, stepTemp);
-
+    scanf("%d", &stairRow);
     while (1)
     {
-        printf("Input stepTemp command: ");
-        scanf("%d", &stepTemp);
-        if (stepTemp == 0)
+        int round = 1;
+        printf("---- round %d ----\n", round);
+        for (int r = stairRow - 1; r >= 0; r--)
         {
+            showStair(r, step, &current, stairRow);
+            printf("\n");
+        }
+        printf("Input step command: ");
+        scanf("%d", &step);
+        if (step == 0)
             break;
-        }
-
-        if (stepTemp - stepTemp < 0)
-        {
-            stepTemp = 0;
-        }
-        else if (stepTemp - stepTemp > (n - 2))
-        {
-            stepTemp = (n - 2);
-        }
-        else
-        {
-            stepTemp -= stepTemp;
-        }
-
-        printf("---- round %d ----\n", i + 1);
-        resStair(n, stepTemp);
-        i++;
+        round++;
     }
 }
