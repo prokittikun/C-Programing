@@ -1,50 +1,58 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char showStair(int index, int step, int *current, int stairRow)
+int main()
 {
-    printf("|-");
-    if (step >= 0)
+    int stairsHeight = 0;
+    int step = 0;
+    printf("Input number of stairs: ");
+    scanf("%d", &stairsHeight);
+    int current = stairsHeight;
+    for (int i = 0; 1; i++)
     {
-        if ((*current + step) + 1 == index)
+        printf("---- round %d ----\n", i + 1);
+        printf("step = %d\n", step);
+        for (int j = 1; j <= stairsHeight; j++)
         {
-            printf("0");
-            *current += step;
+            printf("|-");
+            if (j == (current + step - 1))
+            {
+                printf("^");
+            }
+            else if (j == (current + step))
+            {
+                printf("0");
+            }
+            else
+            {
+                printf("-");
+            }
+            printf("-|%d\n", j);
         }
-        else if ((*current) == index)
+        printf("Input step command: ");
+        int newStep = 0;
+        scanf("%d", &newStep);
+        if (newStep == 0)
         {
-            printf("^");
+            break;
         }
         else
         {
-            printf("-");
+            step -= newStep;
         }
-    }
-    else
-    {
-    }
-    printf("-|");
-}
-int main()
-{
-    int stairRow;
-    int step = 0;
-    int current = 0;
-    printf("Input number of stairs: ");
-    scanf("%d", &stairRow);
-    while (1)
-    {
-        int round = 1;
-        printf("---- round %d ----\n", round);
-        for (int r = stairRow - 1; r >= 0; r--)
-        {
-            showStair(r, step, &current, stairRow);
-            printf("\n");
-        }
-        printf("Input step command: ");
-        scanf("%d", &step);
-        if (step == 0)
-            break;
-        round++;
+        // else if (current + step - newStep - 1 <= 0)
+        // {
+        //     step = 1;
+        // }
+        // else if (current + step - newStep - 1 > stairsHeight)
+        // {
+        //     step = step;
+        // }
+
+        // else if(current + step - 1 < 0)
+        // {
+        //     printf("You lose!\n");
+        //     break;
+        // }
     }
 }
