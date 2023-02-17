@@ -53,6 +53,29 @@ void addLast(NodePtr *startPtr, int value)
         current->next = temp;
     }
 }
+
+void delete(NodePtr *startPtr, int value){
+    if (*startPtr != NULL)
+    {
+        NodePtr current = *startPtr;
+        NodePtr previous = NULL;
+        while (current->next != NULL && current->value != value)
+        {
+            previous = current;
+            current = current->next;
+        }
+        if (current->value == value)
+        {
+            if(previous == NULL){
+                *startPtr = current->next;
+                free(current);
+            }else{
+                previous->next = current->next;
+                free(current);
+            }
+        }
+    }
+}
 int main()
 {
     NodePtr startPtr; // always point to the start of linked list
@@ -64,6 +87,10 @@ int main()
     addLast(&startPtr, 12);
     addLast(&startPtr, 24);
     addLast(&startPtr, 66);
+    delete(&startPtr, 66);
+    delete(&startPtr, 50);
+    delete(&startPtr, 0);
     printList(startPtr);
 
+    
 }
