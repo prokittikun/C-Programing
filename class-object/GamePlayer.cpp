@@ -25,7 +25,8 @@ public:
         {
             hp -= damage;
         }
-        if(hp < 0) hp = 0;
+        if (hp < 0)
+            hp = 0;
     }
 
     string toString()
@@ -33,6 +34,21 @@ public:
         stringstream ss; // local variable
         ss << name << "(" << hp << "/" << maxHp << ")";
         return ss.str();
+    }
+
+    string getName()
+    {
+        return name;
+    }
+
+    int getMaxHp()
+    {
+        return maxHp;
+    }
+
+    int getHp()
+    {
+        return hp;
     }
 };
 
@@ -42,9 +58,6 @@ int main()
     GamePlayer player1("pro", 100);
     GamePlayer player2("luna", 100);
     GamePlayer player3("mare", 50000);
-
-    GamePlayer* monster = new GamePlayer("Rookwood", 5000);
-    cout << monster->toString() << endl;
 
     player1.takeDamage(10);
     player2.takeDamage(1);
@@ -59,6 +72,22 @@ int main()
     cout << player1.toString() << endl;
     cout << player2.toString() << endl;
     cout << player3.toString() << endl;
+
+    GamePlayer *monster = new GamePlayer("Rookwood", 5000);
+    cout << monster->toString() << endl;
+
+    cout << "----------------" << endl;
+    GamePlayer *monsters[10];
+    monsters[0] = monster;
+    monsters[1] = &player2;
+    monsters[2] = new GamePlayer("TU", 12000);
+
+    for (int i = 0; i < 3; i++)
+    {
+        monsters[i]->takeDamage(i * 10);
+        cout << "Name: " << monsters[i]->getName() << endl;
+        cout << "HP: " << monsters[i]->getHp() << "/" << monsters[i]->getMaxHp() << endl;
+    }
 
     return 0;
 }
