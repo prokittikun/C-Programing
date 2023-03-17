@@ -21,17 +21,7 @@ int Image::getHeight() {
     
 string Image::info() {
   stringstream ss;
-  double size = getSizeInGB();
-  string sizeUnit = "GB";
-  if (size < 1) {
-    size = getSizeInMB();
-    sizeUnit = "MB";
-  } 
-  if (size < 1) {
-    size = getSizeInKB();
-    sizeUnit = "KB";
-  }
-  ss << getTitle() << " (" << size << sizeUnit << ")";
+  ss << Media::info();
   ss << "IMAGE Shape: " << width << "x" << height;
   return ss.str();
 }

@@ -16,6 +16,9 @@ class Media {
     double getSizeInKB();
     double getSizeInMB();
     double getSizeInGB();
+    // เพิ่ม virtual function และ pure virtual function
+    virtual string info(); 
+    virtual string toScreen() = 0;
 };
 
 #endif
